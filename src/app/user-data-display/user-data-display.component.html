@@ -7,6 +7,7 @@
       <th scope="col">Email</th>
       <th scope="col">Country</th>
       <th scope="col">Address</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,63 @@
       <td>{{user.email}}</td>
       <td>{{user.country}}</td>
       <td>{{user.address}}</td>
+      <td>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modUpdate"
+          (click)="updateUser(user)">Update</button>
+        <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<div class="modal fade" id="modUpdate" #m>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="updateForm" (ngSubmit)="handleSubmit()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- <form [formGroup]="updateForm" (ngSubmit)="handleSubmit()"> -->
+          <input type="hidden" formControlName="id">
+          <div class="form-group">
+            <label>Firstname</label>
+            <input type="text" class="form-control" formControlName="firstname" />
+          </div>
+          <div class=" form-group">
+            <label>Lastname</label>
+            <input type="text" class="form-control" formControlName="lastname" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email" />
+          </div>
+          <!-- <div class="form-group">
+            <label>Country</label>
+            <select class="form-control" formControlName="country">
+              <option value="">...Select...</option>
+              <option value="SG">Singapore</option>
+              <option value="IN">India</option>
+              <option value="USA">United States</option>
+            </select>
+          </div> -->
+          <div class="form-group">
+            <label>Address</label>
+            <textarea class="form-control" formControlName="address"></textarea>
+          </div>
+          <!-- <div class="form-group">
+              <input type="submit" class="btn btn-danger float-end" />
+            </div> -->
+          <!-- </form> -->
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

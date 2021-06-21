@@ -1,44 +1,43 @@
-import { Component, OnInit,ViewChild,AfterViewInit,ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, DoCheck } from '@angular/core';
 import { SignUpComponent } from '../sign-up/sign-up.component';
+import { UsersService } from '../_services/users.service';
 
 @Component({
   selector: 'app-list-of-registered-users',
   templateUrl: './list-of-registered-users.component.html',
   styleUrls: ['./list-of-registered-users.component.css']
 })
-export class ListOfRegisteredUsersComponent implements OnInit,AfterViewInit {
+export class ListOfRegisteredUsersComponent implements OnInit, AfterViewInit {
   allUser = [];
-  usersFromChild=[];
+  usersFromChild = [];
   user = {
-    name:"Alex"
+    name: "Alex"
   }
-  @ViewChild(SignUpComponent,{static: true}) child;
+  @ViewChild(SignUpComponent, { static: true }) child;
   //@ViewChild('fname',{static: false,read:ElementRef}) firstname: ElementRef;
   //@ViewChild('nameInput',{static: false,read:ElementRef}) someInput: ElementRef;
 
-  constructor() { }
-  ngOnInit(){
-    //console.log(this.child.usersData);
+  constructor(private usersService: UsersService) { }
+
+  ngOnInit() {
     //this.firstname.nativeElement.style.border = "3px dashed green";
+    this.usersService.getUsers().then((json) => this.allUser = json);
   }
 
-  getRegisteredUser(event){
-    this.allUser.push(event);
-    // console.log('List of registedred users');
-    // console.log(this.allUser);
-  }
-
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.usersFromChild = this.child.message;
     //this.someInput.nativeElement.value = "Jugal";
     //this.firstname.nativeElement.style.border = "3px dashed green";
   }
-  ngAfterViewChecked(){
+  ngAfterViewChecked() {
     this.usersFromChild = this.child.usersData;
-    console.log(this.usersFromChild);
-  }
-  updateUser(){
-    this.user.name = "Murali";
   }
 
+  getRegisteredUser(event) {
+    this.usersService.createUser(event).then(json => this.allUser.push(event));
+  }
+
+  // updateUser() {
+  //   this.user.name = "Murali";
+  // }
 }

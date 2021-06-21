@@ -26,13 +26,13 @@
         "src/app/home": true,
         "src/app/industries": true,
         "src/app/insights": true,
-        "src/app/list-of-registered-users": true,
+        // "src/app/list-of-registered-users": true,
         "src/app/page-not-found": true,
         "src/app/services-list": true,
         "src/app/slider": true,
         "src/app/app.component.css": true,
         "src/app/app.component.spec.ts": true,
-        "**/*.spec.ts": true,
+        // "**/*.spec.ts": true,
         "**/*.component.css": true
     }
 }
