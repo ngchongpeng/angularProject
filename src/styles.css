@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-    font-family: 'Overpass';
+  font-family: 'Calibri';
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
 }

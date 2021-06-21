@@ -13,10 +13,23 @@ import { CustomIterateDirective } from '../_directives/custom-iterate.directive'
 import { Task4Child1Component } from './task4/task4-child1/task4-child1.component';
 import { Task4Child2Component } from './task4/task4-child2/task4-child2.component';
 import { FormsModule } from '@angular/forms';
+import { Task5OutputComponent } from './task5/task5-output/task5-output.component';
 
 
 @NgModule({
-  declarations: [AssignmentsComponent, Task1Component, Task2Component, Task3Component, Task4Component, Task5Component, Task1ChildComponent, CustomIterateDirective, Task4Child1Component, Task4Child2Component],
+  declarations: [
+    AssignmentsComponent,
+    Task1Component,
+    Task2Component,
+    Task3Component,
+    Task4Component,
+    Task5Component,
+    Task1ChildComponent,
+    CustomIterateDirective,
+    Task4Child1Component,
+    Task4Child2Component,
+    Task5OutputComponent
+  ],
   imports: [
     CommonModule,
     AssignmentsRoutingModule,
@@ -24,3 +37,4 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class AssignmentsModule { }
+

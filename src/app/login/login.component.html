@@ -9,9 +9,17 @@
           <!-- to error: add class "has-danger" -->
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1"
-              aria-describedby="emailHelp" name="username" #username="ngModel" [(ngModel)]="user"
-              [ngClass]="{'is-invalid': f.submitted && username.invalid}" required minlength="6">
+            <input 
+              type="email" 
+              class="form-control form-control-sm" 
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp" 
+              name="username" 
+              [(ngModel)]="user"
+              #username="ngModel" 
+              [ngClass]="{'is-invalid': f.submitted && username.invalid}" 
+              required 
+              minlength="6">
             <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
               <p *ngIf="username.errors.required">
                 Username field can't be blank
