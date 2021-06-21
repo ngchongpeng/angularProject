@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
     console.log(this.pass);
     sessionStorage.setItem('Username',this.user);
     sessionStorage.setItem('Password',this.pass);
-
   }
 
 }

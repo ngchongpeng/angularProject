@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row">
+        <div *ngFor="let p of posts,trackBy: trackByFn">
+            <p>{{p.title}}</p>
+            <p>{{p.body}}</p>
+            <a  class="btn btn-primary" [routerLink]="['/posts',p.id]">Go</a>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { CareersComponent } from './careers/careers.component';
 import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
 import { IndustriesComponent } from './industries/industries.component';
 import { InsightsComponent } from './insights/insights.component';
 import { ListOfRegisteredUsersComponent } from './list-of-registered-users/list-of-registered-users.component';
@@ -15,37 +14,40 @@ import { UnsavedChangesGuard } from './_guards/un-saved-changes-guard.service';
 
 const routes: Routes = [
   {
-    path:'', component: HomeComponent
+    path: '', redirectTo: '/posts', pathMatch: 'full'
   },
   {
-    path:'insights', component: InsightsComponent
+    path: 'insights', component: InsightsComponent
   },
   {
-    path:'services', loadChildren: () => import('./services/services.module').then(m => m.ServicesModule)
+    path: 'services', loadChildren: () => import('./services/services.module').then(m => m.ServicesModule)
   },
   {
-    path:'careers', component: CareersComponent
+    path: 'careers', component: CareersComponent
   },
   {
-    path:'industries', component: IndustriesComponent,canActivate:[Login]
+    path: 'industries', component: IndustriesComponent, canActivate: [Login]
   },
   {
-    path:'about', component: AboutComponent
+    path: 'about', component: AboutComponent
   },
   {
-    path:'contact', component: ContactComponent
+    path: 'contact', component: ContactComponent
   },
   {
-    path:'assignments', loadChildren: () => import('./assignments/assignments.module').then(m=> m.AssignmentsModule)
+    path: 'posts', loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
   },
   {
-    path:'login', component: LoginComponent,canDeactivate:[UnsavedChangesGuard]
+    path: 'assignments', loadChildren: () => import('./assignments/assignments.module').then(m => m.AssignmentsModule)
   },
   {
-    path:'signup',component: ListOfRegisteredUsersComponent
+    path: 'login', component: LoginComponent, canDeactivate: [UnsavedChangesGuard]
   },
   {
-    path:'**',component: PageNotFoundComponent
+    path: 'signup', component: ListOfRegisteredUsersComponent
+  },
+  {
+    path: '**', component: PageNotFoundComponent
   }
 ];
 

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,7 @@ import { HighlightDirective } from './_directives/highlight.directive';
 import { CustomLoopDirective } from './_directives/custom-loop.directive';
 import { RotateAnimationDirective } from './_directives/rotate-animation.directive';
 import { AssignmentsModule } from './assignments/assignments.module';
-import { CustomIterateDirective } from './_directives/custom-iterate.directive';
+import { PushNotificationModule } from 'ng-push-notification';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { CustomIterateDirective } from './_directives/custom-iterate.directive';
     UserDataDisplayComponent,
     HighlightDirective,
     CustomLoopDirective,
-    RotateAnimationDirective,
+    RotateAnimationDirective
   ],
   imports: [
     BrowserModule,
@@ -59,7 +60,9 @@ import { CustomIterateDirective } from './_directives/custom-iterate.directive';
     ServicesModule,
     FormsModule,
     ReactiveFormsModule,
-    AssignmentsModule
+    AssignmentsModule,
+    HttpClientModule,
+    // PushNotificationModule.forRoot()
   ],
   providers: [UnsavedChangesGuard],
   bootstrap: [AppComponent]

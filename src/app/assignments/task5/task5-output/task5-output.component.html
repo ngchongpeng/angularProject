@@ -1,4 +1,6 @@
+
 <div class="row">
+    <button class="btn btn-primary" (click)="fetchLatestData()">Fetch latest data</button>
     <p>Output</p>
     <p *ngFor="let u of users; let i = index">
         Username: {{u.username}}

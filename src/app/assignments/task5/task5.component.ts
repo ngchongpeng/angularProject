@@ -24,5 +24,8 @@ export class Task5Component implements OnInit {
     (contacts).push(this.contactForm.form.value);
 
     localStorage.setItem('contacts', JSON.stringify(contacts));
+
+    alert('Submitted');
+    this.contactForm.form.reset();
   }
 }

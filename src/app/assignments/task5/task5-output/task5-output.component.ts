@@ -6,11 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task5-output.component.css']
 })
 export class Task5OutputComponent implements OnInit {
-  users = JSON.parse(localStorage.getItem('contacts'));
+  users;
 
   constructor() { }
 
   ngOnInit() {
+    this.fetchLatestData();
   }
 
+  fetchLatestData() {
+    this.users = JSON.parse(localStorage.getItem('contacts'));
+  }
 }
