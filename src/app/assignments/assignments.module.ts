@@ -12,8 +12,8 @@ import { Task1ChildComponent } from './task1/task1-child/task1-child.component';
 import { CustomIterateDirective } from '../_directives/custom-iterate.directive';
 import { Task4Child1Component } from './task4/task4-child1/task4-child1.component';
 import { Task4Child2Component } from './task4/task4-child2/task4-child2.component';
-import { FormsModule } from '@angular/forms';
 import { Task5OutputComponent } from './task5/task5-output/task5-output.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({

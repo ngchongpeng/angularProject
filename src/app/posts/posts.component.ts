@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { PushNotificationService } from 'ng-push-notification';
 import { PostsService } from '../_services/posts.service';
 
 @Component({
@@ -25,6 +23,5 @@ export class PostsComponent implements OnInit {
   }
 
   trackByFn(index) {
-
   }
 }

@@ -1,8 +1,8 @@
-
-<div class="row">
+<div>
+    <h3>Local Storage</h3>
     <button class="btn btn-primary" (click)="fetchLatestData()">Fetch latest data</button>
-    <p>Output</p>
-    <p *ngFor="let u of users; let i = index">
+
+    <p *ngFor="let u of users; let i = index" style="border-bottom: 1px solid grey;">
         Username: {{u.username}}
         <br>
         Email: {{u.email}}

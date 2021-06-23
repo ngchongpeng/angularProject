@@ -1,0 +1,85 @@
+<div class="ngComponent">
+    <div class="row">
+        <h3 class="text-center">List of all Users</h3>
+        <a class="btn btn-secondary form-control" (click)="refreshAllUsers()">Click to refresh all users</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                    <th>Country</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="users.length>0">
+                <tr *ngFor="let user of users; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{user.firstname}}</td>
+                    <td>{{user.lastname}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.country}}</td>
+                    <td>{{user.address}}</td>
+                    <td>
+                        <a class="anchor" data-bs-toggle="modal" data-bs-target="#updateModal"
+                            (click)="openUpdateModal(user)">Update</a>
+                        |
+                        <a class="anchor" (click)="deleteUser(user)">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="users.length<=0">No records found!</p>
+    </div>
+    <div class="modal fade" id="updateModal">
+        <div class="modal-dialog">
+            <div class="modal-content" *ngIf="!submitted">
+                <form [formGroup]="updateForm" (ngSubmit)="updateUser()">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update user</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="hidden" formControlName="id">
+                        </div>
+                        <div class="form-group">
+                            <label>Firstname</label>
+                            <input type="text" class="form-control" formControlName="firstname" />
+                        </div>
+                        <div class=" form-group">
+                            <label>Lastname</label>
+                            <input type="text" class="form-control" formControlName="lastname" />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" formControlName="email" />
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea class="form-control" formControlName="address"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss>Submit</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-content" *ngIf="submitted">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update user</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>User updated successfully!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,15 +1,18 @@
 <div class="container">
-    <p>
-        4) Create sibling component and pass information between them
-    </p>
     <div class="row">
-        <div class="col-md-6">
-            <p>Child 1</p>
-            <app-task4-child1 (inputSent)="onInputSent($event)"></app-task4-child1>
-        </div>
-        <div class="col-md-6">
-            <p>Child 2</p>
-            <app-task4-child2 [output]="receivedInput"></app-task4-child2>
+        <p>
+            4) Create sibling component and pass information between them
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Child 1</h3>
+                <app-task4-child1 (inputSent)="onInputSent($event)"></app-task4-child1>
+            </div>
+            <div class="col-md-6">
+                <h3>Child 2</h3>
+                <app-task4-child2 [output]="receivedInput"></app-task4-child2>
+            </div>
         </div>
     </div>
+    
 </div>

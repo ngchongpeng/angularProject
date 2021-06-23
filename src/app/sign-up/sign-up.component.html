@@ -8,7 +8,7 @@
         <div *ngIf="f.firstname.errors.required">First Name should not be empty!</div>
       </div>
     </div>
-    <div class=" form-group">
+    <div class="form-group">
       <label>Lastname</label>
       <input type="text" name="lastname" appHighlight [highlighter]="'blue'" class="form-control"
         formControlName="lastname" [ngClass]="{'is-invalid': submited && f.lastname.errors }" />
@@ -18,8 +18,8 @@
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="email" name="email" appHighlight [highlighter]="'red'" class="form-control"
-        formControlName="email" [ngClass]="{'is-invalid': submited && f.email.errors }" />
+      <input type="email" name="email" appHighlight [highlighter]="'red'" class="form-control" formControlName="email"
+        [ngClass]="{'is-invalid': submited && f.email.errors }" />
       <div *ngIf="submited && f.email.errors" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">Email should not be empty!</div>
         <div *ngIf="f.email.errors.email">Please enter the valid email!</div>

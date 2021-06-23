@@ -1,16 +1,17 @@
 <div class="container">
-    <p>
-        1) Generate dynamic data using @viewchild decorator by attaching custom event and populate inside a
-        component.We should not use angular Event Binding - Ex - (ngSubmit). We should not use angular directives such
-        as *ngFor or *ngIf instead try creating manupulating the
-        data inside controller file ie 'component TS file'.
-    </p>
     <div class="row">
+        <p>
+            1) Generate dynamic data using @viewchild decorator by attaching custom event and populate inside a
+            component.We should not use angular Event Binding - Ex - (ngSubmit). We should not use angular directives
+            such
+            as *ngFor or *ngIf instead try creating manupulating the
+            data inside controller file ie 'component TS file'.
+        </p>
         <app-task1-child (itemAdded)="onItemAdded($event)"></app-task1-child>
-    </div>
-    <div>
-        <p>Saved Items</p>
-        <div #output>
+        <div>
+            <h3>Data pushed from child</h3>
+            <div #output>
+            </div>
         </div>
     </div>
 </div>

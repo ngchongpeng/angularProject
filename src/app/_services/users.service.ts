@@ -10,13 +10,15 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Promise<any> {
-    return fetch('http://localhost:3000/users')
-      .then((response) => response.json())
-    // .then((json) => console.log(json));
+    return fetch('http://localhost:5000/users')
+      .then(response => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   createUser(user): Promise<any> {
-    return fetch('http://localhost:3000/users', {
+    return fetch('http://localhost:5000/users', {
       method: 'POST',
       body: JSON.stringify(
         user
@@ -25,11 +27,14 @@ export class UsersService {
         'Content-type': 'application/json; charset=UTF-8'
       }
 
-    }).then((response) => response.json());
+    }).then((response) => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   updateUser(user): Promise<any> {
-    return fetch('http://localhost:3000/users/' + user.id, {
+    return fetch('http://localhost:5000/users/' + user.id, {
       method: 'PUT',
       body: JSON.stringify(
         user
@@ -38,12 +43,18 @@ export class UsersService {
         'Content-type': 'application/json; charset=UTF-8'
       }
 
-    }).then((response) => response.json());
+    }).then((response) => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   deleteUser(user): Promise<any> {
-    return fetch('http://localhost:3000/users/' + user.id, {
+    return fetch('http://localhost:5000/users/' + user.id, {
       method: 'DELETE',
-    }).then(response => response.json());
+    }).then(response => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
