@@ -48,9 +48,6 @@ import { UsersComponent } from './assignments/users/users.component';
     HighlightDirective,
     CustomLoopDirective,
     RotateAnimationDirective,
-    UsersComponent,
-    AddUserComponent,
-    AllUsersComponent
   ],
   imports: [
     BrowserModule,
