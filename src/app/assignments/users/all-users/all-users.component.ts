@@ -24,7 +24,7 @@ export class AllUsersComponent implements OnInit {
       country: ['', Validators.required],
       address: ['', Validators.required]
     })
-    this.refreshAllUsers();
+    this.getAllUsers();
   }
 
   openUpdateModal(user: User) {
@@ -32,21 +32,29 @@ export class AllUsersComponent implements OnInit {
     this.submitted = false;
   }
 
+  getAllUsers() {
+    this.usersService.getUsers().subscribe(
+      data => {
+        this.users = data;
+      }
+    );
+  }
+
   updateUser() {
-    let user = this.updateForm.value;
-    this.usersService.updateUser(user).then((u)=> {
-      this.submitted=true;
-    });
+    let user: User = this.updateForm.value;
+    this.usersService.updateUser(user).subscribe(
+      data => {
+        this.submitted = true;
+      }
+    );
   }
 
-  deleteUser() {
-    console.log('deleteUser called!');
-  }
-
-  refreshAllUsers() {
-    this.usersService.getUsers().then((data) => {
-      console.log(data);
-      this.users = data;
-    });
+  deleteUser(index: number) {
+    let user: User = this.users[index];
+    this.usersService.deleteUser(user).subscribe(
+      data => {
+        this.users.splice(index,1);
+      }
+    );
   }
 }

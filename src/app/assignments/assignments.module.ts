@@ -21,26 +21,26 @@ import { AllUsersComponent } from './users/all-users/all-users.component';
 
 @NgModule({
   declarations: [
+    AddUserComponent,
+    AllUsersComponent,
     AssignmentsComponent,
+    CustomIterateDirective,
+    Task1ChildComponent,
     Task1Component,
     Task2Component,
     Task3Component,
-    Task4Component,
-    Task5Component,
-    Task1ChildComponent,
-    CustomIterateDirective,
     Task4Child1Component,
     Task4Child2Component,
+    Task4Component,
+    Task5Component,
     Task5OutputComponent,
     UsersComponent,
-    AddUserComponent,
-    AllUsersComponent
   ],
   imports: [
     CommonModule,
     AssignmentsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class AssignmentsModule { }

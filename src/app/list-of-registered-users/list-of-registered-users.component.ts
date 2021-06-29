@@ -21,7 +21,7 @@ export class ListOfRegisteredUsersComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     //this.firstname.nativeElement.style.border = "3px dashed green";
-    this.usersService.getUsers().then((json) => this.allUser = json);
+    this.usersService.getUsers().subscribe((json) => this.allUser = json);
   }
 
   ngAfterViewInit() {
@@ -34,7 +34,7 @@ export class ListOfRegisteredUsersComponent implements OnInit, AfterViewInit {
   }
 
   getRegisteredUser(event) {
-    this.usersService.createUser(event).then(json => this.allUser.push(event));
+    this.usersService.createUser(event).subscribe(json => this.allUser.push(event));
   }
 
   // updateUser() {

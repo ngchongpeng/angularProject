@@ -8,20 +8,11 @@ import { PostsService } from '../_services/posts.service';
 })
 export class PostsComponent implements OnInit {
   posts: any;
+  query: string;
 
   constructor(private postService: PostsService) { }
 
   ngOnInit() {
-    this.postService.getPosts().subscribe({
-      next: data => { this.posts = data; },
-      error: error => {
-        if (error.status == '404') {
-
-        };
-      }
-    });
-  }
-
-  trackByFn(index) {
+    this.posts = this.postService.getPosts();
   }
 }

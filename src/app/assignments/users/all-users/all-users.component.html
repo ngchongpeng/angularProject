@@ -1,7 +1,7 @@
 <div class="ngComponent">
     <div class="row">
         <h3 class="text-center">List of all Users</h3>
-        <a class="btn btn-secondary form-control" (click)="refreshAllUsers()">Click to refresh all users</a>
+        <a class="btn btn-secondary form-control" (click)="getAllUsers()">Click to refresh all users</a>
         <table class="table">
             <thead>
                 <tr>
@@ -26,7 +26,7 @@
                         <a class="anchor" data-bs-toggle="modal" data-bs-target="#updateModal"
                             (click)="openUpdateModal(user)">Update</a>
                         |
-                        <a class="anchor" (click)="deleteUser(user)">Delete</a>
+                        <a class="anchor" (click)="deleteUser(i)">Delete</a>
                     </td>
                 </tr>
             </tbody>

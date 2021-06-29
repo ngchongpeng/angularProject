@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/_helpers/interfaces/User.model';
 import { UsersService } from 'src/app/_services/users.service';
+
 
 @Component({
   selector: 'app-add-user',
@@ -25,11 +26,11 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser() {
-    let user: User = <User>this.addUserForm.value;
-    this.usersService.createUser(user)
-      .then((data) => {
-        console.log(data);
+    let user: User = this.addUserForm.value;
+    this.usersService.createUser(user).subscribe(
+      data => {
         this.addUserForm.reset();
-      });
+      }
+    );
   }
 }

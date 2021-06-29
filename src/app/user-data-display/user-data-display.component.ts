@@ -40,7 +40,7 @@ export class UserDataDisplayComponent implements OnInit {
   handleSubmit() {
     let user = this.updateForm.value;
     this.usersService.updateUser(user)
-      .then(() => {
+      .subscribe(() => {
         let i = this.UserList.findIndex(u => u.id == user.id);
         this.UserList[i] = user;
       });
@@ -49,7 +49,7 @@ export class UserDataDisplayComponent implements OnInit {
 
   deleteUser(user) {
     this.usersService.deleteUser(user)
-      .then(() => {
+      .subscribe(() => {
         let i = this.UserList.findIndex(u => u.id == user.id);
         this.UserList.splice(i, 1);
       });
