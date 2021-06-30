@@ -2460,7 +2460,10 @@ let HeaderComponent = class HeaderComponent {
         this.showAdminBoard = false;
     }
     ngOnInit() {
-        this.refreshHeader();
+        if (this.tokenStorage.getToken()) {
+            this.refreshHeader();
+            this.authService.isLoggedIn.next(true);
+        }
         this.authService.isLoggedIn.subscribe(info => {
             this.refreshHeader();
         });

@@ -4326,7 +4326,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this5 = this;
 
-          this.refreshHeader();
+          if (this.tokenStorage.getToken()) {
+            this.refreshHeader();
+            this.authService.isLoggedIn.next(true);
+          }
+
           this.authService.isLoggedIn.subscribe(function (info) {
             _this5.refreshHeader();
           });
