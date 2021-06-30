@@ -1,8 +1,5 @@
-  
+
 import { Component, OnInit } from "@angular/core";
-import { ChartDataset, ChartOptions, ChartType } from "chart.js";
-import * as pluginDataLabels from "chartjs-plugin-datalabels";
-import { Label } from "ng2-charts";
 
 
 @Component({
@@ -10,29 +7,52 @@ import { Label } from "ng2-charts";
   templateUrl: './p06.component.html',
   styleUrls: ['./p06.component.css']
 })
-export class P06Component {
-  constructor() {}
+export class P06Component implements OnInit {
+  options: any;
 
-  ngOnInit() {}
+  constructor() { }
 
-  // public barChartOptions: ChartOptions = {
-  //   responsive: true,
-  //   scales: { xAxes: [{}], yAxes: [{}] },
-  //   plugins: {
-  //     datalabels: {
-  //       anchor: "end",
-  //       align: "end",
-  //     },
-  //   },
-  // };
+  ngOnInit() {
+    const xAxisData = [];
+    const data1 = [];
+    const data2 = [];
 
-  // public barChartLabels: Label[] = ["2017", "2018", "2019", "2020", "2021"];
-  // public barChartType: ChartType = "bar";
-  // public barChartLegend = true;
-  // public barChartPlugins = [pluginDataLabels];
+    for (let i = 0; i < 100; i++) {
+      xAxisData.push('category' + i);
+      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
+      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+    }
 
-  // public barChartData: ChartDataset[] = [
-  //   { data: [80, 81, 56, 55, 40], label: "Series A" },
-  //   { data: [40, 19, 86, 27, 90], label: "Series B" },
-  // ];
+    this.options = {
+      legend: {
+        data: ['bar', 'bar2'],
+        align: 'left',
+      },
+      tooltip: {},
+      xAxis: {
+        data: xAxisData,
+        silent: false,
+        splitLine: {
+          show: false
+        }
+      },
+      yAxis: {},
+      series: [
+        {
+          name: 'bar',
+          type: 'bar',
+          data: data1,
+          animationDelay: (idx) => idx * 10,
+        },
+        {
+          name: 'bar2',
+          type: 'bar',
+          data: data2,
+          animationDelay: (idx) => idx * 10 + 100,
+        },
+      ],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: (idx) => idx * 5,
+    };
+  }
 }

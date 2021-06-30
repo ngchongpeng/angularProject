@@ -28,7 +28,6 @@ import { TestComponent } from './test/test.component';
 import { AsyncPipe } from '@angular/common';
 import { Provider } from '@angular/core';
 import { authInterceptorProviders } from './_helpers/auth-interceptor.service';
-// import { ChartsModule,ThemeService } from 'ng2-charts';
 
 
 @NgModule({
@@ -61,7 +60,6 @@ import { authInterceptorProviders } from './_helpers/auth-interceptor.service';
     AssignmentsModule,
     HttpClientModule,
     InsightsModule,
-    // ChartsModule,
   ],
   providers: [
     UnsavedChangesGuard,
