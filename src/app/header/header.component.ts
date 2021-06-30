@@ -19,7 +19,10 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
-    this.refreshHeader();
+    if (this.tokenStorage.getToken()){
+      this.refreshHeader();
+      this.authService.isLoggedIn.next(true);
+    }
 
     this.authService.isLoggedIn.subscribe(
       info => {
