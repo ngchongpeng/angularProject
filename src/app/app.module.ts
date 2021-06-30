@@ -27,6 +27,8 @@ import { UserDataDisplayComponent } from './user-data-display/user-data-display.
 import { TestComponent } from './test/test.component';
 import { AsyncPipe } from '@angular/common';
 import { Provider } from '@angular/core';
+import { authInterceptorProviders } from './_helpers/auth-interceptor.service';
+// import { ChartsModule,ThemeService } from 'ng2-charts';
 
 
 @NgModule({
@@ -59,11 +61,13 @@ import { Provider } from '@angular/core';
     AssignmentsModule,
     HttpClientModule,
     InsightsModule,
+    // ChartsModule,
   ],
   providers: [
     UnsavedChangesGuard,
     AsyncPipe,
     ChangeDetectorRef as Provider,
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

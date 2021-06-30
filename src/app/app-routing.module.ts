@@ -32,11 +32,14 @@ const routes: Routes = [
     path: 'assignments', loadChildren: () => import('./assignments/assignments.module').then(m => m.AssignmentsModule)
   },
   {
-    path: 'signup', component: ListOfRegisteredUsersComponent
+    path: 'final', loadChildren: () => import('./final/final.module').then(m => m.FinalModule)
   },
   {
-    path: 'posts', loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
+    path: 'signup', component: ListOfRegisteredUsersComponent
   },
+  // {
+  //   path: 'posts', loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
+  // },
   {
     path: '**', component: PageNotFoundComponent
   },

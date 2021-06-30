@@ -50,8 +50,22 @@
               <li><a class="dropdown-item" href="#" routerLink="/assignments/task2">Task 5</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/posts">Posts</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Final
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#" routerLink="/final/p01">{{isLoggedIn ? username
+                  : 'Login'}}</a></li>
+              <li><a *ngIf="isLoggedIn" class="dropdown-item" href="#" routerLink="/final/p02">Profile</a></li>
+              <li><a *ngIf="showModeratorBoard" class="dropdown-item" href="#" routerLink="/final/p03">Moderator</a>
+              </li>
+              <li><a *ngIf="showAdminBoard" class="dropdown-item" href="#" routerLink="/final/p04">Admin</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/final/p05">Angular concepts</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/final/p06">Chart</a></li>
+              <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+            </ul>
           </li>
         </ul>
       </div>
