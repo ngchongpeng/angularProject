@@ -5,6 +5,7 @@ import { ListOfRegisteredUsersComponent } from './list-of-registered-users/list-
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TestComponent } from './test/test.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { UnsavedChangesGuard } from './_guards/un-saved-changes-guard.service';
 
 
@@ -40,6 +41,9 @@ const routes: Routes = [
   // {
   //   path: 'posts', loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule)
   // },
+  {
+    path: 'unauthorized', component: UnauthorizedComponent
+  },
   {
     path: '**', component: PageNotFoundComponent
   },

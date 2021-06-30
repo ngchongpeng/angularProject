@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
@@ -12,10 +13,10 @@ export class P01Component implements OnInit {
   isLoggedIn = false;
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
-  ngOnInit() { 
-    if (this.tokenStorage.getToken()){
+  ngOnInit() {
+    if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
@@ -28,12 +29,12 @@ export class P01Component implements OnInit {
         this.tokenStorage.saveUser(data);
 
         this.isLoggedIn = true;
-        this.reloadPage();
+        this.authService.isLoggedIn.next(true);
+        this.router.navigate(['final/p02']);
+      },
+      err => {
+        alert('Signin failed. Please try again!');
       }
     );
-  }
-
-  reloadPage() {
-    window.location.reload();
   }
 }

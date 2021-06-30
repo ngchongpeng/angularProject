@@ -56,15 +56,15 @@
               Final
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#" routerLink="/final/p01">{{isLoggedIn ? username
-                  : 'Login'}}</a></li>
-              <li><a *ngIf="isLoggedIn" class="dropdown-item" href="#" routerLink="/final/p02">Profile</a></li>
-              <li><a *ngIf="showModeratorBoard" class="dropdown-item" href="#" routerLink="/final/p03">Moderator</a>
-              </li>
-              <li><a *ngIf="showAdminBoard" class="dropdown-item" href="#" routerLink="/final/p04">Admin</a></li>
-              <li><a class="dropdown-item" href="#" routerLink="/final/p05">Angular concepts</a></li>
-              <li><a class="dropdown-item" href="#" routerLink="/final/p06">Chart</a></li>
-              <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+              <li><a *ngIf="!isLoggedIn" class="dropdown-item" routerLink="/final/p01">Login</a></li>
+              <li><a *ngIf="isLoggedIn" class="dropdown-item" routerLink="/final/p02">{{ username }}</a></li>
+              <li><a *ngIf="isLoggedIn && showModeratorBoard" class="dropdown-item"
+                  routerLink="/final/p03">Moderator</a></li>
+              <li><a *ngIf="isLoggedIn && showAdminBoard" class="dropdown-item" href="#"
+                  routerLink="/final/p04">Admin</a></li>
+              <li><a *ngIf="isLoggedIn" class="dropdown-item" routerLink="/final/p05">Angular concepts</a></li>
+              <li><a *ngIf="isLoggedIn" class="dropdown-item" routerLink="/final/p06">Chart</a></li>
+              <li><a *ngIf="isLoggedIn" class="dropdown-item" (click)="logout()">Logout</a></li>
             </ul>
           </li>
         </ul>

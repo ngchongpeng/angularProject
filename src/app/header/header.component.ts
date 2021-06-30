@@ -1,4 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 
 
@@ -14,24 +16,36 @@ export class HeaderComponent implements OnInit {
   showModeratorBoard: boolean = false;
   showAdminBoard: boolean = false;
 
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorage.getToken();
+    this.refreshHeader();
 
-    if (this.isLoggedIn) {
+    this.authService.isLoggedIn.subscribe(
+      info => {
+        this.refreshHeader();
+      }
+    )
+  }
+
+  refreshHeader() {
+    if (this.tokenStorage.getToken()) {
       const user = this.tokenStorage.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
+      this.isLoggedIn = true;
       this.username = user.username;
+      this.showAdminBoard = user.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = user.roles.includes('ROLE_MODERATOR');
+    } else {
+      this.isLoggedIn = false;
+      this.username = null;
+      this.showAdminBoard = false;
+      this.showModeratorBoard = false;
     }
   }
 
   logout() {
     this.tokenStorage.signOut();
-    window.location.reload();
+    this.authService.isLoggedIn.next(false);
+    this.router.navigate(['final/p01']);
   }
 }

@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { nextTick } from 'process';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
 
@@ -24,14 +24,14 @@ export class AuthService {
     let obs$ = Observable.create(consumer => {
       let user = {
         username: credentials.username,
-        roles:['ROLE_ADMIN','ROLE_MODERATOR'],
+        roles: ['ROLE_ADMIN', 'ROLE_MODERATOR'],
         accessToken: '1234567890'
       };
 
       consumer.next(user);
       consumer.complete();
     });
-    
+
     return obs$;
   }
 

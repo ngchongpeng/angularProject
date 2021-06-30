@@ -28,6 +28,7 @@ import { TestComponent } from './test/test.component';
 import { AsyncPipe } from '@angular/common';
 import { Provider } from '@angular/core';
 import { authInterceptorProviders } from './_helpers/auth-interceptor.service';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { authInterceptorProviders } from './_helpers/auth-interceptor.service';
     CustomLoopDirective,
     RotateAnimationDirective,
     TestComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,

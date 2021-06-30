@@ -19,7 +19,8 @@
               #username="ngModel" 
               [ngClass]="{'is-invalid': f.submitted && username.invalid}" 
               required 
-              minlength="6">
+              minlength="6"
+              email>
             <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
               <p *ngIf="username.errors.required">
                 Username field can't be blank
